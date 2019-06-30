@@ -46,8 +46,9 @@ def avisa_pontos(pontos_ate_agora)
   puts "Você ganhou #{pontos_ate_agora} pontos."
 end
 
-def cabecalho_de_uma_tentativa(chutes, erros)
+def cabecalho_de_uma_tentativa(chutes, erros, mascara)
   puts "\n\n"
+  puts "A palavra secreta é: #{mascara}"
   puts "Erros até agora: #{erros}"
   puts "Chutes até agora: #{chutes}"
 end
