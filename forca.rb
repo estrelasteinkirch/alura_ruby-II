@@ -1,4 +1,5 @@
 require_relative 'ui'
+require_relative 'rank'
 
 
 
@@ -53,7 +54,7 @@ def joga(nome)
   chutes = []
   pontos_ate_agora = 0
 
-  while erros < 7
+  while erros < 5
     mascara = palavra_mascarada(chutes, palavra_secreta)
     chute = pede_um_chute_valido(chutes, erros, mascara)
 
@@ -105,12 +106,3 @@ def jogo_da_forca
 end
 
 
-def salva_rank(nome, pontos)
-  conteudo = "#{nome}\n#{pontos}"
-  File.write "rank.txt", conteudo
-end
-
-def le_rank
-  conteudo = File.read "rank.txt"
-  conteudo.split "\n"
-end
