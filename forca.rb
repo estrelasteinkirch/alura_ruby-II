@@ -1,5 +1,26 @@
 require_relative 'ui'
 
+
+
+def escolhe_palavra_secreta
+  avisa_escolhendo_palavra
+  texto = File.read("dicionario.txt")
+  todas_as_palavras = texto.split("\n")
+  numero_escolhido = rand(todas_as_palavras.size)
+  palavra_secreta = todas_as_palavras[numero_escolhido].downcase
+  avisa_palavra_escolhida(palavra_secreta)
+end
+
+
+def escolhe_palavra_secreta
+  avisa_escolhendo_palavra
+  texto = File.read("dicionario.txt")
+  todas_as_palavras = texto.split("\n")
+  numero_escolhido = rand(todas_as_palavras.size)
+  palavra_secreta = todas_as_palavras[numero_escolhido].downcase
+  avisa_palavra_escolhida(palavra_secreta)
+end
+
 def palavra_mascarada(chutes, palavra_secreta)
   mascara =""
   for letra in palavra_secreta.chars
@@ -25,14 +46,14 @@ def pede_um_chute_valido(chutes, erros, mascara)
   end
 end
 
-def joga
+def joga(nome)
   palavra_secreta = escolhe_palavra_secreta
 
   erros = 0
   chutes = []
   pontos_ate_agora = 0
 
-  while erros < 5
+  while erros < 7
     mascara = palavra_mascarada(chutes, palavra_secreta)
     chute = pede_um_chute_valido(chutes, erros, mascara)
 
@@ -65,12 +86,16 @@ def joga
 
   end
   avisa_pontos(pontos_ate_agora)
+  pontos_ate_agora
 end
 
-nome = da_boas_vindas
-loop do 
-  joga
-  if nao_quer_jogar?
-    break
+def jogo_da_forca
+  nome = da_boas_vindas
+  pontos_totais = 0
+  
+  loop do   
+    pontos_totais += joga(nome)
+    avisa_pontos_totais(pontos_totais)
+    break if nao_quer_jogar?
   end
 end
