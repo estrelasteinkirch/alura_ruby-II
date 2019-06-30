@@ -46,12 +46,16 @@ def avisa_pontos(pontos_ate_agora)
   puts "Você ganhou #{pontos_ate_agora} pontos."
 end
 
-def pede_um_chute(chutes, erros)
+def cabecalho_de_uma_tentativa(chutes, erros)
   puts "\n\n"
   puts "Erros até agora: #{erros}"
   puts "Chutes até agora: #{chutes}"
+end
+
+def pede_um_chute
   puts "Entre com uma letra ou uma palavra"
   chute = gets.strip
+  puts "\n\n\n\n"
   puts "Será que acertou? Você chutou #{chute}"
   puts "\n\n"
   chute

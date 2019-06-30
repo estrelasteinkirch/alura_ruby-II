@@ -1,5 +1,17 @@
 require_relative 'ui'
 
+def pede_um_chute_valido(chutes, erros)
+  cabecalho_de_uma_tentativa(chutes, erros)
+  loop do
+    chute = pede_um_chute
+    if chutes.include? chute
+      avisa_chute_efetuado(chute)
+    else
+      return chute
+    end
+  end
+end
+
 def joga
   palavra_secreta = escolhe_palavra_secreta
 
@@ -9,11 +21,7 @@ def joga
 
 
   while erros < 5
-    chute = pede_um_chute(chutes, erros)
-    if chutes.include? chute
-    avisa_chute_efetuado(chute)
-    next #repete o laço, sem contabilizar um erro a mais
-    end
+    chute = pede_um_chute_valido(chutes, erros)
 
     chutes << chute
 
