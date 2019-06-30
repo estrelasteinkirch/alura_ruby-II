@@ -117,3 +117,7 @@ def desenha_forca(erros)
     puts
 
 end
+
+def palavra_secreta_era(palavra_secreta)
+  puts "A palavra secreta era: #{palavra_secreta}"
+end

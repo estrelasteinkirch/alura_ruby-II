@@ -61,22 +61,39 @@ def joga(nome)
     chutes << chute
 
     chutou_uma_letra = chute.size == 1
+
     if chutou_uma_letra
       letra_procurada = chute[0]
-      total_encontrado = palavra_secreta.count letra_procurada
+      total_encontrado = palavra_secreta.count(letra_procurada)
+      
 
       if total_encontrado == 0
         avisa_letra_nao_encontrada
         erros += 1
+        pontos_ate_agora -= 10
+
       else
-        avisa_letra_encontrada(total_encontrado)
+        if total_encontrado == 0
+          avisa_letra_nao_encontrada
+          erros += 1
+         else
+          avisa_letra_encontrada(total_encontrado)
+      
+          if mascara.count('_') == total_encontrado
+            avisa_acertou_palavra
+            pontos_ate_agora += 100
+            palavra_secreta_era (palavra_secreta) 
+            break
+          end
+          end
       end
+      
     else
       acertou = chute == palavra_secreta
       if acertou
         avisa_acertou_palavra
-        
-        pontos_ate_agora += 100
+        palavra_secreta_era (palavra_secreta)
+        pontos_ate_agora += 200
         break #sai do while
       else #chutou uma palavra
         avisa_errou_palavra
